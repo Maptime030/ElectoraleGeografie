@@ -4,10 +4,11 @@ Data en tools voor Maptime030 over Electorale Geografie
 
 
 
+## Election results
 
-Download the data from http://www.verkiezingsuitslagen.nl/Na1918/Verkiezingsuitslagen.aspx?VerkiezingsTypeId=1 and save the csv file of the year you want to map. 
+Download the data from http://www.verkiezingsuitslagen.nl/Na1918/Verkiezingsuitslagen.aspx?VerkiezingsTypeId=1 and save the csv file of the year you want to map. We already downloaded some and can be found [here](/downloads). 
 
-To strip the csv files from the year overview and last 4 lines with the disclaimer run this sed command on the files:
+To strip the csv files from the year overview and last 4 lines with the disclaimer, run this sed command on the files. It also adds an extra column with the year in it. This you have to fill in manually per file. 
 
 	sed -e 's/$/,year/' -n -e '1,/Amsterdamse/{x;d;};1h;1!{x;p;};${x;p;}' < inputfile.csv  | head -n -4  > outputfile.csv
 
@@ -21,7 +22,12 @@ This is what we did:
 	sed -e 's/$/,2010/' -n -e '1,/Amsterdamse/{x;d;};1h;1!{x;p;};${x;p;}' < VerkiezingsuitslagenTK_2010.csv  | head -n -4  > 2010.csv
 	sed -e 's/$/,2012/' -n -e '1,/Amsterdamse/{x;d;};1h;1!{x;p;};${x;p;}' < VerkiezingsuitslagenTK_2012.csv  | head -n -4  > 2012.csv
 
-To get the shapes from the muncipalities per year we can request those at gemeentegeschiedenis.nl.
+The stripped csv files can be found [here](/data)
+Now we have the election results in a nice CSV table. 
+
+## Municipality geometries
+
+To get the shapes from the muncipalities per year we can request those at gemeentegeschiedenis.nl. 
 For example all geometry shapes of the municipality of Utrecht in json format can be requested at with their Amsterdamse Code. 
 
 	curl http://www.gemeentegeschiedenis.nl/geo/geojson/10722 > utrecht_all.geojson
@@ -62,4 +68,3 @@ Browse to your file location and put the settigns on `No geometry (attribute onl
 ## Cartogram Plugin
 
 	Plugins > Manage and Install Plugins...
-	
