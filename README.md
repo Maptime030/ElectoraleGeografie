@@ -41,9 +41,6 @@ If you only want the geometry of one year :
 
 	curl http://www.gemeentegeschiedenis.nl/geo/geojson/10722/1998 > utrecht_1998.geojson
 
-Now, if we want all municipalities of the Netherlands for a given year we can use the WFS:
-
-	http://46.21.168.170/cgi-bin/mapserv?map=gg.map&SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=gemeenteref&SRSNAME=EPSG:4326&OUTPUTFORMAT=geojson&FILTER=%3CFilter%3E%3CPropertyIsEqualTo%3E%3CPropertyName%3Eacode%3C/PropertyName%3E%3CLiteral%3E11150%3C/Literal%3E%3C/PropertyIsEqualTo%3E%3C/Filter%3E&jaar=1980
 
 #### HELP what is the command line?!
 If you don't know how to run these command in your shell you can also just copy the links in your browser. Then there are 2 options:
@@ -59,16 +56,28 @@ For the geometry of one year for one municipality:
 
 	http://www.gemeentegeschiedenis.nl/geo/geojson/10722/1998
 
-All municipalities of the Netherlands for one year
 
-	http://46.21.168.170/cgi-bin/mapserv?map=gg.map&SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=gemeenteref&SRSNAME=EPSG:4326&OUTPUTFORMAT=geojson&FILTER=%3CFilter%3E%3CPropertyIsEqualTo%3E%3CPropertyName%3Eacode%3C/PropertyName%3E%3CLiteral%3E11150%3C/Literal%3E%3C/PropertyIsEqualTo%3E%3C/Filter%3E&jaar=1980
+### But we want all municipalities of one specific year!? 
 
+Let's add those directly to Qgis from the WFS service! :) 
 
-## QGis
+Add a Layer
+	
+	Layer > Add Layer > Add Vector Layer
 
-Open both layers of one year in Qgis. The geometries and the CSV file.
+Select `Protocol` and put the following link in the `uri` field: 
 
-1. Open the GeoJSON
+	http://46.21.168.170/cgi-bin/mapserv?map=gg.map&SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=gemeenteref&SRSNAME=EPSG:4326&OUTPUTFORMAT=geojson&jaar=1980
+
+Like this:
+
+![](img/geojson.png)
+
+Now right click the layer and `Save As...` a GeoJSON, ShapeFile ect. Add the saved file to the map, because we will work futher with the saved file! 
+
+#### Adding a GeoJson file QGis
+
+Open the GeoJSON
 	
 	Layer > Add Layer > Add Vector Layer
 
@@ -78,7 +87,7 @@ Browse to your file location and change the file format to GeoJSON! See picture 
 
 ![](img/add_geojson.png)
 
-2. Open the CSV file
+### Open the CSV files in Qgis
 
 	Layer > Add Layer > Add Delimeted Text Layer
 
@@ -96,6 +105,10 @@ Open the tab `Joins` and add a new join. See the image below for the settings:
 
 ![](img/join.png)
 
+If you now look at the attributes of the municipality geometries you see the attributes of the election results are added to the layer!
+Ready for styling!
+
+# Making maps!
 
 ## Cartogram Plugin
 
