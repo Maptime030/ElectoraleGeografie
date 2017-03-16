@@ -7,6 +7,7 @@ Data en tools voor Maptime030 over Electorale Geografie
 
 Download the data from http://www.verkiezingsuitslagen.nl/Na1918/Verkiezingsuitslagen.aspx?VerkiezingsTypeId=1 and save the csv file of the year you want to map. We already downloaded some and can be found [here](/downloads). 
 
+#### With the command line
 To strip the csv files from the year overview and last 4 lines with the disclaimer, run this sed command on the files. It also adds an extra column with the year in it. This you have to fill in manually per file. 
 
 	sed -e 's/$/,year/' -n -e '1,/Amsterdamse/{x;d;};1h;1!{x;p;};${x;p;}' < inputfile.csv  | head -n -4  > outputfile.csv
@@ -23,6 +24,9 @@ This is what we did:
 
 The stripped csv files can be found [here](/data). Now we have the election results in a nice CSV table. 
 
+#### HELP what is the command line?!
+If you don't know how to run these command in your shell you can always just use Exel to edit the csv files manually! An easy task, just takes a bit more time. 
+
 ## Municipality geometries
 
 To get the shapes from the muncipalities per year we can request those at gemeentegeschiedenis.nl. 
@@ -37,15 +41,15 @@ If you only want the geometry of one year :
 
 	curl http://www.gemeentegeschiedenis.nl/geo/geojson/10722/1998 > utrecht_1998.geojson
 
-Now, if we want all municipalities of the Netherlands for a given year:
+Now, if we want all municipalities of the Netherlands for a given year we can use the WFS:
 
-	curl http://gemeentegeschiedenis.nl/cgi-bin/mapserv?map=gg.map&LAYERS=gemeenteref&JAAR=1998&FORMAT=image/png&SRS=EPSG:28992&EXCEPTIONS=application/vnd.ogc.se_inimage&TRANSPARENT=TRUE&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&STYLES=&BBOX=-50485.12,395620.290625,352743.68,533476.290625&WIDTH=1170&HEIGHT=400 > nederland_1998.geojson
+	http://46.21.168.170/cgi-bin/mapserv?map=gg.map&SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=gemeenteref&SRSNAME=EPSG:4326&OUTPUTFORMAT=geojson&FILTER=%3CFilter%3E%3CPropertyIsEqualTo%3E%3CPropertyName%3Eacode%3C/PropertyName%3E%3CLiteral%3E11150%3C/Literal%3E%3C/PropertyIsEqualTo%3E%3C/Filter%3E&jaar=1980
 
 #### HELP what is the command line?!
 If you don't know how to run these command in your shell you can also just copy the links in your browser. Then there are 2 options:
 
-1. Select all the text and copy this to a text editor. Save as a `.geojson` file.
-2. Click right mouse button, `Save page as` and save as a text file. Manually type the extension when giving a file name. Like: `myfile.geojson` 
+1. Open the link in the browser > Click right mouse button, `Save page as` and save as a text file. Manually type the extension when giving a file name. Like: `myfile.geojson` 
+2. Open the link in the broser > Select all the text and copy this to a text editor. Save as a `.geojson` file.
 
 The links you can use for all geometries of one municipality:
 
@@ -57,7 +61,7 @@ For the geometry of one year for one municipality:
 
 All municipalities of the Netherlands for one year
 
-	http://gemeentegeschiedenis.nl/cgi-bin/mapserv?map=gg.map&LAYERS=gemeenteref&JAAR=1998&FORMAT=image/png&SRS=EPSG:28992&EXCEPTIONS=application/vnd.ogc.se_inimage&TRANSPARENT=TRUE&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&STYLES=&BBOX=-50485.12,395620.290625,352743.68,533476.290625&WIDTH=1170&HEIGHT=400
+	http://46.21.168.170/cgi-bin/mapserv?map=gg.map&SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=gemeenteref&SRSNAME=EPSG:4326&OUTPUTFORMAT=geojson&FILTER=%3CFilter%3E%3CPropertyIsEqualTo%3E%3CPropertyName%3Eacode%3C/PropertyName%3E%3CLiteral%3E11150%3C/Literal%3E%3C/PropertyIsEqualTo%3E%3C/Filter%3E&jaar=1980
 
 
 ## QGis
@@ -83,6 +87,15 @@ Browse to your file location and change the file format to GeoJSON! See picture 
 Browse to your file location and put the settigns on `No geometry (attribute only table)`. See picture below:
 
 ![](img/open_csv.png)
+
+## Join!
+
+To join the geometries with the information table we can make a join. 
+Click with the `right mouse button` on the geometry layer. Go to `Properties`.
+Open the tab `Joins` and add a new join. See the image below for the settings: 
+
+![](img/join.png)
+
 
 ## Cartogram Plugin
 
