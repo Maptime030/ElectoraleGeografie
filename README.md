@@ -13,6 +13,8 @@ After that it is up to you to make a beautiful map and tell your story with the 
 - Download this repository on your computer 
 - QGis
 
+![](img/opkomstpercentage.png)
+
 ## Election results
 
 The election results of the Tweede Kamerverkiezingen of all years can be downloaded at http://www.verkiezingsuitslagen.nl/Na1918/Verkiezingsuitslagen.aspx?VerkiezingsTypeId=1 and downloaded as csv files. We already downloaded some and can be found [here](/downloads). But feel free to choose your own years to visualize! 
