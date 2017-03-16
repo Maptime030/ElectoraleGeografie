@@ -1,7 +1,6 @@
-# ElectoraleGeografie
+# Electorale Geografie
+
 Data en tools voor Maptime030 over Electorale Geografie
-
-
 
 
 ## Election results
@@ -22,13 +21,15 @@ This is what we did:
 	sed -e 's/$/,2010/' -n -e '1,/Amsterdamse/{x;d;};1h;1!{x;p;};${x;p;}' < VerkiezingsuitslagenTK_2010.csv  | head -n -4  > 2010.csv
 	sed -e 's/$/,2012/' -n -e '1,/Amsterdamse/{x;d;};1h;1!{x;p;};${x;p;}' < VerkiezingsuitslagenTK_2012.csv  | head -n -4  > 2012.csv
 
-The stripped csv files can be found [here](/data)
-Now we have the election results in a nice CSV table. 
+The stripped csv files can be found [here](/data). Now we have the election results in a nice CSV table. 
 
 ## Municipality geometries
 
 To get the shapes from the muncipalities per year we can request those at gemeentegeschiedenis.nl. 
-For example all geometry shapes of the municipality of Utrecht in json format can be requested at with their Amsterdamse Code. 
+
+#### With the command line
+`cd` to your folder and run the following codes to download the data.
+All geometry shapes of the municipality of Utrecht in json format can be requested at with their Amsterdamse Code. 
 
 	curl http://www.gemeentegeschiedenis.nl/geo/geojson/10722 > utrecht_all.geojson
 
@@ -39,6 +40,24 @@ If you only want the geometry of one year :
 Now, if we want all municipalities of the Netherlands for a given year:
 
 	curl http://gemeentegeschiedenis.nl/cgi-bin/mapserv?map=gg.map&LAYERS=gemeenteref&JAAR=1998&FORMAT=image/png&SRS=EPSG:28992&EXCEPTIONS=application/vnd.ogc.se_inimage&TRANSPARENT=TRUE&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&STYLES=&BBOX=-50485.12,395620.290625,352743.68,533476.290625&WIDTH=1170&HEIGHT=400 > nederland_1998.geojson
+
+#### HELP what is the command line?!
+If you don't know how to run these command in your shell you can also just copy the links in your browser. Then there are 2 options:
+
+1. Select all the text and copy this to a text editor. Save as a `.geojson` file.
+2. Click right mouse button, `Save page as` and save as a text file. Manually type the extension when giving a file name. Like: `myfile.geojson` 
+
+The links you can use for all geometries of one municipality:
+
+	http://www.gemeentegeschiedenis.nl/geo/geojson/10722
+
+For the geometry of one year for one municipality:
+
+	http://www.gemeentegeschiedenis.nl/geo/geojson/10722/1998
+
+All municipalities of the Netherlands for one year
+
+	http://gemeentegeschiedenis.nl/cgi-bin/mapserv?map=gg.map&LAYERS=gemeenteref&JAAR=1998&FORMAT=image/png&SRS=EPSG:28992&EXCEPTIONS=application/vnd.ogc.se_inimage&TRANSPARENT=TRUE&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&STYLES=&BBOX=-50485.12,395620.290625,352743.68,533476.290625&WIDTH=1170&HEIGHT=400
 
 
 ## QGis
