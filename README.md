@@ -96,7 +96,7 @@ Add a Layer
 
 Select `Protocol` and put the following link in the `uri` field: 
 
-	http://46.21.168.170/cgi-bin/mapserv?map=gg.map&SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=gemeenteref&SRSNAME=EPSG:4326&OUTPUTFORMAT=geojson&jaar=1980
+	http://www.gemeentegeschiedenis.nl/cgi-bin/mapserv?map=gg.map&SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=gemeenteref&SRSNAME=EPSG:4326&OUTPUTFORMAT=geojson&jaar=1980
 
 Like this:
 
@@ -106,7 +106,7 @@ Open. Wait a little... TADA!
 
 Now right click the layer and `Save As...` a GeoJSON, ShapeFile ect. Add the saved file to the map, because we will work further with the saved file! 
 
-We prepared [some ShapeFiles](/shape) for you already. 
+We prepared [some Esri Shape files](/shape) for you already. 
 
 
 ## Join!
