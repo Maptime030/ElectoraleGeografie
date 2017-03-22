@@ -43,7 +43,7 @@ The stripped csv files can be found [here](/csv_edited). Now we have the electio
 ### HELP what is the command line?!
 If you don't know how to run these command in your shell you can always just use Exel to edit the csv files manually! An easy task, just takes a bit more time. Or just use [these files](/csv_edited) that we prepared for you already! 
 
-### Open the CSV files in Qgis
+### Open the CSV files in QGIS
 
 	Layer > Add Layer > Add Delimited Text Layer
 
@@ -56,11 +56,11 @@ Browse to your file location and put the settings on `No geometry (attribute onl
 
 ## Municipality geometries
 
-To get the shapes from the municipalities per year we can request those from [gemeentegeschiedenis.nl](www.gemeentegeschiedenis.nl). If you want to download the official shape files you can get those from the [CBS](https://www.cbs.nl/nl-nl/dossier/nederland-regionaal/geografische-data).
+The polygons for the municipalities per year can be obtained from [Gemeentegeschiedenis.nl](http://www.gemeentegeschiedenis.nl). These polygons not only contain the official CBS codes and official municipality names, but also the Amsterdam codes. The Amsterdam code allows for longitudinal (temporal) comparison. To obtain other attributes of the municipalities (e.g. population size), the Netherlands Bureau of Statistics (CBS) also provides [Esri Shape files](https://www.cbs.nl/nl-nl/dossier/nederland-regionaal/geografische-data).
 
 ### We want all municipalities of one specific year in QGIS!
 
-Let's add those directly to Qgis from the WFS service! :) 
+Let's add those directly to QGIS from the WFS service! :) 
 
 Add a Layer
 	
@@ -78,7 +78,7 @@ Like this:
 
 Open. Wait a little... TADA! 
 
-Now right click the layer and `Save As...` a GeoJSON, ShapeFile ect. Add the saved file to the map, because we will work further with the saved file! 
+Now right click the layer and `Save As...` a GeoJSON, Esri Shape file ect. Add the saved file to the map, because we will work further with the saved file! 
 
 We also prepared [some Esri Shape files](/shapefiles) for you already wich you can also download and open in QGIS. 
 
@@ -96,10 +96,10 @@ If you now look at the attributes of the municipality geometries you see the att
 Ready for styling!
 
 ## Making maps!
-Now it is time for you to make some maps! In order to manipulate the data, we can use the `field calculator` in QGIS, or edit our CSV (in excel for example) before joining them in Qgis. For styling right click the layer and `Properties`. On the tap `style` you can style your layers.
+Now it is time for you to make some maps! In order to manipulate the data, we can use the `field calculator` in QGIS, or edit our CSV (in excel for example) before joining them in QGIS. For styling right click the layer and `Properties`. On the tap `style` you can style your layers.
 For exporting our maps, you can use the `print composer` in QGIS. Here you can export your maps as images or SVG.  
 
-Do you need more styling tips, have a look at the [Qgis tutorials](http://www.qgistutorials.com/en/docs/basic_vector_styling.html)
+Do you need more styling tips, have a look at the [QGIS tutorials](http://www.qgistutorials.com/en/docs/basic_vector_styling.html)
 
 Here are some ideas to visualize:
 
