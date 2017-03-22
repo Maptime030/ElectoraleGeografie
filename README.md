@@ -116,3 +116,12 @@ Here are some ideas to visualize:
 * En andere visualisaties. Stippen voor de hoeveelheid stemmen per partij in een gemeente. Of staafjes die aangeven hoeveel stemmen er voor een partij in een gemeente waren. 3D modellen waarbij gemeenten met veel inwoners omhoog komen. Dat soort dingen hebben we in de VS gezien. Of dat een gemeente donkerder kleurt als er meer mensen wonen, waardoor je beter zie hoe de waarde van een gemeente is voor een partij. 
 
 
+## D3.js
+So much data! Let's have some fun with D3.js! (if you do not know what D3.js is, or you want to learn it: [Maps wiht D3 beginners tutorial](https://github.com/Maptime030/Leaflet-D3-Workshop/tree/gh-pages/tutorial-d3-starter)) 
+
+
+We already made a start with D3, but it is not working yet. Feel free to use these files as a start for your own project. Do not forget to share your web maps with us!
+
+* [demo.html](demo.html)
+* [demo.js](demo.js)
+* [demo.css](demo.css)

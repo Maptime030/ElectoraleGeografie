@@ -35,7 +35,7 @@ var color = d3.scaleLinear()
     .range(["blue","purple", "red","orange", "yellow", "green"]);
 
 //Load in GeoJSON data
-d3.json("data/1994.json", function(json) {
+d3.json("csv_edited/1994.json", function(json) {
 	console.log(json.features)
 	
 	// Array of parties
@@ -77,7 +77,7 @@ d3.json("data/1994.json", function(json) {
 });	
 
 function updateData(partij){
-	d3.json("data/1994.json", function(json) {
+	d3.json("csv_edited/1994.json", function(json) {
 	console.log(partij)
 	d3.select("g").selectAll("path")
 			.data(json.features)
