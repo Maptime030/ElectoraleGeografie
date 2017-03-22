@@ -56,35 +56,9 @@ Browse to your file location and put the settings on `No geometry (attribute onl
 
 ## Municipality geometries
 
-To get the shapes from the municipalities per year we can request those at gemeentegeschiedenis.nl. 
+To get the shapes from the municipalities per year we can request those from [gemeentegeschiedenis.nl](www.gemeentegeschiedenis.nl). If you want to download the official shape files you can get those from the [CBS](https://www.cbs.nl/nl-nl/dossier/nederland-regionaal/geografische-data).
 
-### With the command line
-`cd` to your folder and run the following codes to download the data.
-All geometry shapes of the municipality of Utrecht in GeoJSON format can be requested at with their Amsterdamse Code. 
-
-	curl http://www.gemeentegeschiedenis.nl/geo/geojson/10722 > utrecht_all.geojson
-
-If you only want the geometry of one year :
-
-	curl http://www.gemeentegeschiedenis.nl/geo/geojson/10722/1998 > utrecht_1998.geojson
-
-
-### HELP what is the command line?!
-If you don't know how to run these command in your shell you can also just copy the links in your browser. Then there are 2 options:
-
-1. Open the link in the browser > Click right mouse button, `Save page as` and save as a text file. Manually type the extension when giving a file name. Like: `myfile.geojson` 
-2. Open the link in the browser > Select all the text and copy this to a text editor. Save as a `.geojson` file.
-
-The links you can use for all geometries of one municipality:
-
-	http://www.gemeentegeschiedenis.nl/geo/geojson/10722
-
-For the geometry of one year for one municipality:
-
-	http://www.gemeentegeschiedenis.nl/geo/geojson/10722/1998
-
-
-### But we want all municipalities of one specific year!? 
+### We want all municipalities of one specific year in QGIS!
 
 Let's add those directly to Qgis from the WFS service! :) 
 
@@ -94,7 +68,7 @@ Add a Layer
 
 ![](images/add_vector_layer.png)
 
-Select `Protocol` and put the following link in the `uri` field: 
+Select `Protocol` and put the following link in the `uri` field. See that the last bit contains the year? Change that to any year you want from 1812 untill now! 
 
 	http://www.gemeentegeschiedenis.nl/cgi-bin/mapserv?map=gg.map&SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=gemeenteref&SRSNAME=EPSG:4326&OUTPUTFORMAT=geojson&jaar=1980
 
@@ -106,14 +80,15 @@ Open. Wait a little... TADA!
 
 Now right click the layer and `Save As...` a GeoJSON, ShapeFile ect. Add the saved file to the map, because we will work further with the saved file! 
 
-We prepared [some Esri Shape files](/shapefiles) for you already. 
+We also prepared [some Esri Shape files](/shapefiles) for you already wich you can also download and open in QGIS. 
 
 
 ## Join!
 
 To join the geometries with the information table we can make a join. 
-Click with the `right mouse button` on the geometry layer. Go to `Properties`.
-Open the tab `Joins` and add a new join. See the image below for the settings: 
+Click with the `right mouse button` on the table containing the **geometries**! Go to `Properties`.
+Open the tab `Joins` and add a new join. We will join the information from our CSV file to the geometries with a matching attribute.
+See the image below for the settings: 
 
 ![](images/join.png)
 
@@ -121,7 +96,19 @@ If you now look at the attributes of the municipality geometries you see the att
 Ready for styling!
 
 ## Making maps!
+Now it is time for you to make some maps! In order to show what we want, we can use the `field calculator` in QGIS, or edit our CSV (in excel for example) before joining them in Qgis. 
+Here are some ideas to visualize:
 
-### Cartogram Plugin
+* Vergelijkingen over tijd zijn mooi. Zoals je de kaarten met opkomst naast elkaar hebt staan, zo kun je ook kaarten per partij maken. Dus de score van die partij. Wat ook kan is de relatieve score per partij. Dus score tov landelijk gemiddelde ipv absolute score, dan zie je hoe partijen over de tijd verschuiven (bv Limburg is nog steeds PVV bolwerk, maar de groei zit in het noorden). 
 
-	Plugins > Manage and Install Plugins...
+* Combinaties van partijen. B.v. links of rechts, of 'groen' of 'populistisch'. Ook dat kun je mooi vergelijken over de tijd. Er zijn bijvoorbeeld linkse gebieden van de kaart verdwenen, zoals het Rivierenland. Ook is het leuk om te kijken in hoeverre gemeenten afwijken van het gemiddelde. Of te kijken hoe vaak een gemeente op de landelijk winnende partij heeft gestemd. 
+
+* Winsten en verliezen zijn ook leuk om naar te kijken. Waar zitten de absolute en relatieve verliezen van partijen? 
+
+* voor de gevorderden. Die cartogrammen, waarbij de kaart vervormd naar inwoneraantal, die zijn natuurlijk leuk. Leuk om die voor alle partijen te maken. Dus inwoneraantal, en dan hoe donkerder hoe meer aanhang. Of ze vervormen op basis van het aantal stemmen voor die partij. Dus een opgeblazen Limburg voor de PVV bv. En nog veel verder opgeblazen steden voor GroenLinks. 
+
+	Plugins > Manage and Install Plugins...  > Cartogram
+
+* En andere visualisaties. Stippen voor de hoeveelheid stemmen per partij in een gemeente. Of staafjes die aangeven hoeveel stemmen er voor een partij in een gemeente waren. 3D modellen waarbij gemeenten met veel inwoners omhoog komen. Dat soort dingen hebben we in de VS gezien. Of dat een gemeente donkerder kleurt als er meer mensen wonen, waardoor je beter zie hoe de waarde van een gemeente is voor een partij. 
+
+
