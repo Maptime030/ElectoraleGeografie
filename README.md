@@ -17,7 +17,7 @@ After that it is up to you to make a beautiful map and tell your story with the 
 
 ## Election results
 
-The election results of the Tweede Kamerverkiezingen of all years can be downloaded at http://www.verkiezingsuitslagen.nl/Na1918/Verkiezingsuitslagen.aspx?VerkiezingsTypeId=1 and downloaded as csv files. We already downloaded some and can be found [here](/downloads). But feel free to choose your own years to visualize! 
+The election results of the Tweede Kamerverkiezingen of all years can be downloaded at http://www.verkiezingsuitslagen.nl/Na1918/Verkiezingsuitslagen.aspx?VerkiezingsTypeId=1 and downloaded as csv files. We already downloaded some and can be found [here](/csv_downloads). But feel free to choose your own years to visualize! 
 
 The CSV files contain the election results per municipality. Containing the CBS code and Amsterdamse code for the municipality. This is interesting because with this we can easily link them to the geometries!
 
@@ -38,10 +38,10 @@ This is what we did:
 	sed -e 's/$/,2010/' -e 's/\%//g' -e 's/#//g' -n -e '1,/Amsterdamse/{x;d;};1h;1!{x;p;};${x;p;}' < VerkiezingsuitslagenTK_2010.csv  | head -n -4  > 2010.csv
 	sed -e 's/$/,2012/' -e 's/\%//g' -e 's/#//g' -n -e '1,/Amsterdamse/{x;d;};1h;1!{x;p;};${x;p;}' < VerkiezingsuitslagenTK_2012.csv  | head -n -4  > 2012.csv
 
-The stripped csv files can be found [here](/data). Now we have the election results in a nice CSV table. 
+The stripped csv files can be found [here](/csv_edited). Now we have the election results in a nice CSV table. 
 
 ### HELP what is the command line?!
-If you don't know how to run these command in your shell you can always just use Exel to edit the csv files manually! An easy task, just takes a bit more time. Or just use [these files](/data) that we prepared for you already! 
+If you don't know how to run these command in your shell you can always just use Exel to edit the csv files manually! An easy task, just takes a bit more time. Or just use [these files](/csv_edited) that we prepared for you already! 
 
 ### Open the CSV files in Qgis
 
@@ -106,7 +106,7 @@ Open. Wait a little... TADA!
 
 Now right click the layer and `Save As...` a GeoJSON, ShapeFile ect. Add the saved file to the map, because we will work further with the saved file! 
 
-We prepared [some Esri Shape files](/shape) for you already. 
+We prepared [some Esri Shape files](/shapefiles) for you already. 
 
 
 ## Join!
