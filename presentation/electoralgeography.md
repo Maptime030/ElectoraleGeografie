@@ -10,7 +10,7 @@
 * 19:15 Hans Fast: how far is the nearest polling station?
 * 19:30 Josse de Voogd: electoral geography and maps
 * 20:15 Hands on: make your own election maps
-* 21:30 Keep working or have a drink! 
+* 21:30 Wrap up
 
 ----
 
