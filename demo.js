@@ -36,18 +36,22 @@ var color = d3.scaleLinear()
 
 //Create Legend
 var legend = d3.select("body")
-	.append("div")
-	.attr("width", "100px")
+	.append("ol")
+	.attr("width", "10%")
 	.attr("height", "300px");
 
-legend.selectAll("div")
+legend.selectAll("li")
 	.data(color.domain().reverse())
 	.enter()
-	.append("div")
+	.append("li")
 	.attr("class", "legend")
 	.style("background-color", function(d){
 		return color(d)
-	});
+	})
+	.text(function(d){
+		return d
+	})
+	.style("color", "#fff");
 
 //Load in GeoJSON data
 d3.json("csv_edited/1994.json", function(json) {
