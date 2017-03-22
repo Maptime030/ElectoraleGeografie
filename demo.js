@@ -49,7 +49,7 @@ legend.selectAll("li")
 		return color(d)
 	})
 	.text(function(d){
-		return d
+		return d + "%"
 	})
 	.style("color", "#fff");
 
