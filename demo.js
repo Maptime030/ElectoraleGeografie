@@ -29,15 +29,30 @@ var layerLanden = svg.append('g');
 
 var attributen = [];
 
-
 var color = d3.scaleLinear()
-    .domain([0,500,1000,5000,50000,116425])
-    .range(["blue","purple", "red","orange", "yellow", "green"]);
+    .domain([0,10,20,30,40,50,75,100])
+    .range(["red","orange", "yellow","green", "blue", "purple", "grey","black"]);
+
+
+//Create Legend
+var legend = d3.select("body")
+	.append("div")
+	.attr("width", "100px")
+	.attr("height", "300px");
+
+legend.selectAll("div")
+	.data(color.domain().reverse())
+	.enter()
+	.append("div")
+	.attr("class", "legend")
+	.style("background-color", function(d){
+		return color(d)
+	});
 
 //Load in GeoJSON data
 d3.json("csv_edited/1994.json", function(json) {
-	console.log(json.features)
-	
+	console.log(json.features[0].properties.PvdA)
+	console.log(json.features[0].properties["geldige stemmen"])
 	// Array of parties
 	for(var key in json.features[0].properties){
 		attributen.push(key);
@@ -70,7 +85,7 @@ d3.json("csv_edited/1994.json", function(json) {
 		.transition()
 		.style("opacity",1)
 		.style("fill", function(d){
-			return color(d.properties.PvdA)
+			return color( (d.properties.PvdA*100)/d.properties["geldige stemmen"])
 		})
 		.ease(d3.easeLinear)
 		.duration(500)
@@ -84,7 +99,7 @@ function updateData(partij){
 			.transition()
 			.style("opacity",1)
 			.style("fill", function(d){
-				return color(d.properties[partij])
+				return color((d.properties[partij]*100)/d.properties["geldige stemmen"])
 			});
 	});
 }
