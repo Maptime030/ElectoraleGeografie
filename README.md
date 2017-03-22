@@ -13,7 +13,7 @@ After that it is up to you to make a beautiful map and tell your story with the 
 - Download this repository on your computer 
 - QGis
 
-![](img/opkomstpercentage.png)
+![](images/opkomstpercentage.png)
 
 ## Election results
 
@@ -47,11 +47,11 @@ If you don't know how to run these command in your shell you can always just use
 
 	Layer > Add Layer > Add Delimited Text Layer
 
-![](img/add_csv.png)
+![](images/add_csv.png)
 
 Browse to your file location and put the settings on `No geometry (attribute only table)`. See picture below:
 
-![](img/open_csv.png)
+![](images/open_csv.png)
 
 
 ## Municipality geometries
@@ -92,7 +92,7 @@ Add a Layer
 	
 	Layer > Add Layer > Add Vector Layer
 
-![](img/add_vector_layer.png)
+![](images/add_vector_layer.png)
 
 Select `Protocol` and put the following link in the `uri` field: 
 
@@ -100,7 +100,7 @@ Select `Protocol` and put the following link in the `uri` field:
 
 Like this:
 
-![](img/geojson.png)
+![](images/geojson.png)
 
 Open. Wait a little... TADA! 
 
@@ -115,7 +115,7 @@ To join the geometries with the information table we can make a join.
 Click with the `right mouse button` on the geometry layer. Go to `Properties`.
 Open the tab `Joins` and add a new join. See the image below for the settings: 
 
-![](img/join.png)
+![](images/join.png)
 
 If you now look at the attributes of the municipality geometries you see the attributes of the election results are added to the layer!
 Ready for styling!
