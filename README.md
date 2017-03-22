@@ -85,7 +85,7 @@ We also prepared [some Esri Shape files](/shapefiles) for you already wich you c
 
 ## Join!
 
-To join the geometries with the information table we can make a join. 
+To combine the geometries with the information from our CSV table we can make a `join`. 
 Click with the `right mouse button` on the table containing the **geometries**! Go to `Properties`.
 Open the tab `Joins` and add a new join. We will join the information from our CSV file to the geometries with a matching attribute.
 See the image below for the settings: 
@@ -96,7 +96,11 @@ If you now look at the attributes of the municipality geometries you see the att
 Ready for styling!
 
 ## Making maps!
-Now it is time for you to make some maps! In order to show what we want, we can use the `field calculator` in QGIS, or edit our CSV (in excel for example) before joining them in Qgis. 
+Now it is time for you to make some maps! In order to manipulate the data, we can use the `field calculator` in QGIS, or edit our CSV (in excel for example) before joining them in Qgis. For styling right click the layer and `Properties`. On the tap `style` you can style your layers.
+For exporting our maps, you can use the `print composer` in QGIS. Here you can export your maps as images or SVG.  
+
+Do you need more styling tips, have a look at the [Qgis tutorials](http://www.qgistutorials.com/en/docs/basic_vector_styling.html)
+
 Here are some ideas to visualize:
 
 * Vergelijkingen over tijd zijn mooi. Zoals je de kaarten met opkomst naast elkaar hebt staan, zo kun je ook kaarten per partij maken. Dus de score van die partij. Wat ook kan is de relatieve score per partij. Dus score tov landelijk gemiddelde ipv absolute score, dan zie je hoe partijen over de tijd verschuiven (bv Limburg is nog steeds PVV bolwerk, maar de groei zit in het noorden). 
