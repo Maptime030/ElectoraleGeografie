@@ -2,8 +2,14 @@
 	background-color: #eee;
 	width: 150px;
 	height: 40px;
-	color:; #fff;
+	color: #000;
 	left:0px;
-	display: inline-block;
-
+	display: block;
+	position: initial;
+	text-align: left;
 }
+
+svg { 
+	position:fixed;
+	z-index: -10;
+ }

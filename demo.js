@@ -81,7 +81,6 @@ function updateData(partij){
 	console.log(partij)
 	d3.select("g").selectAll("path")
 			.data(json.features)
-			.enter()
 			.transition()
 			.style("opacity",1)
 			.style("fill", function(d){
